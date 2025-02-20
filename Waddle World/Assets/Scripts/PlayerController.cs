@@ -21,14 +21,21 @@ public class PlayerController : MonoBehaviour
     }
 
     void PlayerMovement(){
-        float movementX = Input.GetAxis("Horizontal") * moveSpeed;
-        float movementZ = Input.GetAxis("Vertical") * moveSpeed;
+        float storeY = moveDirection.y;
+        float movementX = Input.GetAxis("Horizontal");
+        float movementZ = Input.GetAxis("Vertical");
+        moveDirection = (transform.forward * movementZ) + (transform.right * movementX);
+        moveDirection = moveDirection.normalized * moveSpeed;
+        moveDirection.y = storeY;
 
-        moveDirection = new Vector3(movementX, moveDirection.y, movementZ);
-
-        if(Input.GetButtonDown("Jump")){
-            moveDirection.y = jumpForce;
+        if(controller.isGrounded){
+            moveDirection.y = 0f;
+            if(Input.GetButtonDown("Jump"))
+            {
+                moveDirection.y = jumpForce;
+            }
         }
+        
 
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale);
         controller.Move(moveDirection * Time.deltaTime);
