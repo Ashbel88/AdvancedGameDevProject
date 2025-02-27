@@ -857,6 +857,9 @@ MonoBehaviour:
   controller: {fileID: 0}
   gravityScale: 0.05
   anim: {fileID: 333218021}
+  pivot: {fileID: 573131100}
+  rotateSpeed: 10
+  playerModel: {fileID: 333218019}
 --- !u!143 &1090057303
 CharacterController:
   m_ObjectHideFlags: 0
