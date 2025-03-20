@@ -1,12 +1,10 @@
 using UnityEngine;
 
-public class CoinPickup : MonoBehaviour
+public class Spring : MonoBehaviour
 {
-    [SerializeField] PlayerManager playerManager;
 
-    [SerializeField] GameObject pickupEffect;
-
-    public int value;
+    [SerializeField] private PlayerController playerController;
+    public int springForce;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,18 +15,15 @@ public class CoinPickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            playerManager.AddCoin(value);
-
-            Instantiate(pickupEffect, transform.position, transform.rotation);
-
-            Destroy(gameObject);
+            Vector3 direction = other.transform.position - transform.position;
+            playerController.SpringLaunch(direction, springForce);
         }
     }
 }

@@ -13,7 +13,12 @@ public class PlayerController : MonoBehaviour
     public float knockBackForce;
     public float knockBackTime;
     private float knockBackCounter;
-    
+
+    // Rotating the Player during Movement
+
+    [SerializeField] private GameObject playerModel;
+    [SerializeField] private Transform pivot;
+    public float rotateSpeed;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,11 +59,23 @@ public class PlayerController : MonoBehaviour
        
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale);
         controller.Move(moveDirection * Time.deltaTime);
+
+        if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0){
+            transform.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, 0f);
+            Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
+            playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed*Time.deltaTime);
+        }
     }
 
     public void Knockback(Vector3 direction)
     {
         moveDirection = direction * knockBackForce;
         moveDirection.y = knockBackForce;
+    }
+
+    public void SpringLaunch(Vector3 direction, int springForce)
+    {
+        moveDirection = direction * springForce;
+        moveDirection.y = springForce;
     }
 }
