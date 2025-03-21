@@ -69,6 +69,8 @@ public class PlayerController : MonoBehaviour
 
     public void Knockback(Vector3 direction)
     {
+        knockBackCounter = knockBackTime;
+
         moveDirection = direction * knockBackForce;
         moveDirection.y = knockBackForce;
     }

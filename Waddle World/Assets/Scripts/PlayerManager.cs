@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour
     public float invincibilityLength;
     private float invincibilityCounter;
 
-    // public Renderer playerRenderer; When we have a player model (:)
+    public Renderer playerRenderer;
 
     // Character Model Flashing Taking Damage (Will make more sense when we have a Character Model)
     private float flashCounter;
@@ -55,6 +55,7 @@ public class PlayerManager : MonoBehaviour
         {
             
             currentHealth -= damage;
+            healthText.text = "Health: " + currentHealth;
 
             if(currentHealth <= 0)
             {
@@ -66,9 +67,9 @@ public class PlayerManager : MonoBehaviour
 
                 invincibilityCounter = invincibilityLength;
 
-                // playerRenderer.enabled = false;
+                playerRenderer.enabled = false;
 
-               // flashCounter = flashLength;
+               flashCounter = flashLength;
             }
         }
     }
@@ -94,13 +95,13 @@ public class PlayerManager : MonoBehaviour
             {
                 // Character Model Flashing
 
-               // playerRenderer.enabled = !playerRenderer.enabled;
+               playerRenderer.enabled = !playerRenderer.enabled;
                 flashCounter = flashLength;
             }
 
             if(invincibilityCounter <= 0)
             {
-                // playerRenderer.enabled = true;
+                playerRenderer.enabled = true;
             }
 
         }
@@ -110,7 +111,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(!isRespawning)
         {
-            StartCoroutine("RespwanCo");
+            StartCoroutine("RespawnCo");
         }
     }
 
@@ -125,9 +126,10 @@ public class PlayerManager : MonoBehaviour
         thePlayer.gameObject.SetActive(true);
         thePlayer.transform.position = respawnPoint;
         currentHealth = maxHealth;
+        healthText.text = "Health: " + currentHealth;
 
         invincibilityCounter = invincibilityLength;
-        // playerRenderer.enabled = false;
+        playerRenderer.enabled = false;
         flashCounter = flashLength;
     }
 
