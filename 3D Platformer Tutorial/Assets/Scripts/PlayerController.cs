@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     private Vector3 moveDirection;
     public float gravityScale;
+    public float diveDistance;
+    private bool canDive;
 
     public Animator anim;
     public Transform pivot;
@@ -53,9 +55,21 @@ public class PlayerController : MonoBehaviour
             moveDirection.y = 0f;
             if(Input.GetButtonDown("Jump"))
             {
+                canDive = true;
                 moveDirection.y = jumpForce;
             }
-       }
+           } 
+
+           else
+           {
+               if(canDive)
+               {
+                   if(Input.GetButtonDown("Fire1"))
+                    {
+                        Dive();
+                    }
+               } 
+           }
 
        } else
         {
@@ -83,5 +97,12 @@ public class PlayerController : MonoBehaviour
 
         moveDirection = direction * knockBackForce;
         moveDirection.y = knockBackForce;
+    }
+
+    public void Dive()
+    {
+        moveDirection = moveDirection * diveDistance;
+        moveDirection.y = 2;
+        canDive = false;
     }
 }

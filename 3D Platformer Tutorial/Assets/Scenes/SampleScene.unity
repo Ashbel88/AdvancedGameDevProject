@@ -1556,6 +1556,7 @@ MonoBehaviour:
   jumpForce: 15
   controller: {fileID: 1090057303}
   gravityScale: 0.05
+  diveDistance: 5
   anim: {fileID: 333218021}
   pivot: {fileID: 573131100}
   rotateSpeed: 10
