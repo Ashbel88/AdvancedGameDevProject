@@ -53,7 +53,7 @@ public class PlayerManager : MonoBehaviour
     {
        if(invincibilityCounter <=0)
         {
-            
+            thePlayer.anim.SetTrigger("isHurt");
             currentHealth -= damage;
             healthText.text = "Health: " + currentHealth;
 

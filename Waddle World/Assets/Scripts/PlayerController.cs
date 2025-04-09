@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDirection;
     public float gravityScale;
 
+    [SerializeField] public Animator anim;
+
     // Knockback Stuff
 
     public float knockBackForce;
@@ -23,13 +25,15 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-   
+
     }
 
     // Update is called once per frame
     void Update()
     {
         PlayerMovement();
+        Animations();
+        
     }
 
     void PlayerMovement(){
@@ -79,5 +83,11 @@ public class PlayerController : MonoBehaviour
     {
         moveDirection = direction * springForce;
         moveDirection.y = springForce;
+    }
+
+    private void Animations()
+    {
+        anim.SetBool("isGrounded", controller.isGrounded);
+        anim.SetFloat("Speed", (Mathf.Abs(Input.GetAxis("Vertical"))+Mathf.Abs(Input.GetAxis("Horizontal"))));
     }
 }
