@@ -6,9 +6,6 @@ SOURCES
 https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Vector3.html 
 https://www.youtube.com/watch?v=ly9mK0TGJJo */
 
-// TO-DO: Reverse the platform when going from end position to start.
-       // Trigger functions.
-
 using UnityEngine;
 
 public class MovingPlatformNEW : MonoBehaviour
