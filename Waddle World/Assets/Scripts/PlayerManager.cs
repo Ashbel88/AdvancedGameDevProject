@@ -33,8 +33,8 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        healthText.text = "Health: " + currentHealth;
-        coinText.text = "Coins: " + currentCoins;
+        healthText.text = "" + currentHealth;
+        coinText.text = "" + currentCoins;
     }
 
     // Update is called once per frame
@@ -46,7 +46,7 @@ public class PlayerManager : MonoBehaviour
     public void AddCoin(int coinToAdd)
     {
         currentCoins += coinToAdd;
-        coinText.text = "Coins: " + currentCoins;
+        coinText.text = "" + currentCoins;
     }
 
     public void HurtPlayer(int damage, Vector3 direction)
@@ -55,7 +55,7 @@ public class PlayerManager : MonoBehaviour
         {
             thePlayer.anim.SetTrigger("isHurt");
             currentHealth -= damage;
-            healthText.text = "Health: " + currentHealth;
+            healthText.text = "" + currentHealth;
 
             if(currentHealth <= 0)
             {
@@ -126,7 +126,7 @@ public class PlayerManager : MonoBehaviour
         thePlayer.gameObject.SetActive(true);
         thePlayer.transform.position = respawnPoint;
         currentHealth = maxHealth;
-        healthText.text = "Health: " + currentHealth;
+        healthText.text = "" + currentHealth;
 
         invincibilityCounter = invincibilityLength;
         playerRenderer.enabled = false;
