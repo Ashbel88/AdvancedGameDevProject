@@ -27,6 +27,9 @@ public class PlayerManager : MonoBehaviour
     private Vector3 respawnPoint;
     public float respawnLength;
 
+    //For game over
+    public GameObject gameOverUI;
+    public bool isDead;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -35,12 +38,14 @@ public class PlayerManager : MonoBehaviour
         currentHealth = maxHealth;
         healthText.text = "" + currentHealth;
         coinText.text = "" + currentCoins;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         Invicibility();
+        gameOver();
     }
 
     public void AddCoin(int coinToAdd)
@@ -139,5 +144,25 @@ public class PlayerManager : MonoBehaviour
 
         // print(respawnPoint); for testing (:
     }
+
+    //When player health reaches 0, goes to game over screen
+        public void gameOver(){
+
+        if (currentHealth <= 0 && !isDead){
+            isDead = true;
+            gameOverUI.SetActive(true);
+
+            if (gameOverUI.activeInHierarchy){
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                Camera.main.GetComponent<CameraController>().enabled = false;
+            } else{
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
+    }
+
+
 }
 
