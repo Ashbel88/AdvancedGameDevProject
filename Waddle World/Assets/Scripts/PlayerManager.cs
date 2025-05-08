@@ -21,7 +21,7 @@ public class PlayerManager : MonoBehaviour
 
     // Character Model Flashing Taking Damage (Will make more sense when we have a Character Model)
     private float flashCounter;
-    public float flashLength = 0.1f;
+    public float flashLength = 1.0f;
 
     private bool isRespawning;
     private Vector3 respawnPoint;
