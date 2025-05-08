@@ -27,9 +27,11 @@ public class PlayerManager : MonoBehaviour
     private Vector3 respawnPoint;
     public float respawnLength;
 
-    //For game over
+    //For game over + win screen
     public GameObject gameOverUI;
     public bool isDead;
+    public GameObject winScreenUI;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
