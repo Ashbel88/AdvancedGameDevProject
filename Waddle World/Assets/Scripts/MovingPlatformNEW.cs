@@ -63,6 +63,8 @@ public class MovingPlatformNEW : MonoBehaviour
         if (percentage >= 1) {
             SwitchStart();
             isReverse = !isReverse;
+            Debug.Log("Reverse.");
+            Debug.Log(isReverse);
         }
 
     }

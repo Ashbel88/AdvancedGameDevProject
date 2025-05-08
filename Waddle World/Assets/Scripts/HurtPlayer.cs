@@ -20,11 +20,8 @@ public class HurtPlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
-        {
-            Vector3 hitDirection = other.transform.position - transform.position;
-            hitDirection = hitDirection.normalized;
-            playerManager.HurtPlayer(damageToGive, hitDirection);
-        }
+        Vector3 hitDirection = other.transform.position - transform.position;
+        hitDirection = hitDirection.normalized;
+        playerManager.HurtPlayer(damageToGive, hitDirection);
     }
 }
