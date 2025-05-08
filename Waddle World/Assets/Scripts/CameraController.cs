@@ -19,6 +19,11 @@ public class CameraController : MonoBehaviour
     public bool invertY;
 
 
+    void Awake()
+    {
+        transform.position = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z - 10);
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

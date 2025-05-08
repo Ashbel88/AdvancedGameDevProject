@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3170334201219653190}
   - component: {fileID: 6709018467302038942}
   - component: {fileID: 6227767307512137723}
-  - component: {fileID: 3959786822522169142}
+  - component: {fileID: 3110865617004967598}
   m_Layer: 0
   m_Name: Gold Pickup Effect
   m_TagString: Untagged
@@ -4892,7 +4892,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &3959786822522169142
+--- !u!114 &3110865617004967598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4901,7 +4901,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 950074246011137488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18e74afedc422ab44a227a4fd29d5d27, type: 3}
+  m_Script: {fileID: 11500000, guid: 848a3d35440febc49a43f14821792dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 1.2
