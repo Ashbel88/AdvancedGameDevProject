@@ -31,8 +31,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject gameOverUI;
     public bool isDead;
     public GameObject winScreenUI;
-
-
+    public bool hasWon;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -48,6 +47,7 @@ public class PlayerManager : MonoBehaviour
     {
         Invicibility();
         gameOver();
+        winScreen();
     }
 
     public void AddCoin(int coinToAdd)
@@ -163,6 +163,27 @@ public class PlayerManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
+    }
+    
+    //when a gold fish is claimed, shows a win screen
+    public void winScreen(){
+    //     //tesitng it using one coin win lol
+    //     if (currentCoins == 1 && !hasWon){ 
+    //         hasWon = true; 
+    //         winScreenUI.SetActive(true);
+
+    //         if (winScreenUI.activeInHierarchy){
+    //             Cursor.visible = true;
+    //             Cursor.lockState = CursorLockMode.None;
+    //             Camera.main.GetComponent<CameraController>().enabled = false;
+    //         } else{
+    //             Cursor.visible = false;
+    //             Cursor.lockState = CursorLockMode.Locked;
+    //         }
+    //     }
+
+
+
     }
 
 
