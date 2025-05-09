@@ -5,7 +5,7 @@ using System.Collections;
 
 public class PlayerManager : MonoBehaviour
 {
-    private int currentCoins = 0;
+    public int currentCoins = 0;
     public int maxHealth;
     private int currentHealth;
 
@@ -32,6 +32,7 @@ public class PlayerManager : MonoBehaviour
     public bool isDead;
     public GameObject winScreenUI;
     public bool hasWon;
+    public GameObject fish;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -46,8 +47,8 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         Invicibility();
-        gameOver();
         winScreen();
+        activeCoinFish();
     }
 
     public void AddCoin(int coinToAdd)
@@ -66,7 +67,7 @@ public class PlayerManager : MonoBehaviour
 
             if(currentHealth <= 0)
             {
-                Respawn();
+                gameOver();
             } 
             else
             {
@@ -149,9 +150,6 @@ public class PlayerManager : MonoBehaviour
 
     //When player health reaches 0, goes to game over screen
         public void gameOver(){
-
-        if (currentHealth <= 0 && !isDead){
-            isDead = true;
             gameOverUI.SetActive(true);
 
             if (gameOverUI.activeInHierarchy){
@@ -162,28 +160,36 @@ public class PlayerManager : MonoBehaviour
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
-        }
+        
     }
     
     //when a gold fish is claimed, shows a win screen
     public void winScreen(){
-    //     //tesitng it using one coin win lol
-    //     if (currentCoins == 1 && !hasWon){ 
-    //         hasWon = true; 
-    //         winScreenUI.SetActive(true);
+   
+         if (hasWon){ 
+             winScreenUI.SetActive(true);
 
-    //         if (winScreenUI.activeInHierarchy){
-    //             Cursor.visible = true;
-    //             Cursor.lockState = CursorLockMode.None;
-    //             Camera.main.GetComponent<CameraController>().enabled = false;
-    //         } else{
-    //             Cursor.visible = false;
-    //             Cursor.lockState = CursorLockMode.Locked;
-    //         }
-    //     }
-
+             if (winScreenUI.activeInHierarchy){
+                 Cursor.visible = true;
+                 Cursor.lockState = CursorLockMode.None;
+                 Camera.main.GetComponent<CameraController>().enabled = false;
+             } else{
+                 Cursor.visible = false;
+                 Cursor.lockState = CursorLockMode.Locked;
+             }
+         }
 
 
+
+    }
+
+
+    public void activeCoinFish()
+    {
+        if(currentCoins >= 100)
+        {
+            fish.SetActive(true);
+        }
     }
 
 
