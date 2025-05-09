@@ -1294,6 +1294,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 492841492}
   m_LocalEulerAnglesHint: {x: 0, y: -89.821, z: 0}
+--- !u!114 &572640280 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 585387631591309771, guid: dd8be67340047cf4caea55404f0f3c85, type: 3}
+  m_PrefabInstance: {fileID: 1012206780}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &605111260 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2067387241969484549, guid: 8b415890494c21a48803fdc118211c44, type: 3}
@@ -1862,6 +1873,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2067387241969484549, guid: 8b415890494c21a48803fdc118211c44, type: 3}
   m_PrefabInstance: {fileID: 1893242645}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1018733846 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7487345864432831836, guid: dd8be67340047cf4caea55404f0f3c85, type: 3}
+  m_PrefabInstance: {fileID: 1012206780}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1064249183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1963,9 +1985,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b50a35f79453ce45946aae07f745392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCoins: 0
   maxHealth: 5
-  coinText: {fileID: 0}
-  healthText: {fileID: 0}
+  coinText: {fileID: 1018733846}
+  healthText: {fileID: 572640280}
   thePlayer: {fileID: 1268175589}
   invincibilityLength: 1
   playerRenderer: {fileID: 458765132}
@@ -1975,6 +1998,7 @@ MonoBehaviour:
   isDead: 0
   winScreenUI: {fileID: 0}
   hasWon: 0
+  fish: {fileID: 0}
 --- !u!1 &1116120892
 GameObject:
   m_ObjectHideFlags: 0
