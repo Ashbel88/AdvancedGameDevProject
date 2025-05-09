@@ -34,6 +34,11 @@ public class PlayerManager : MonoBehaviour
     public bool hasWon;
     public GameObject fish;
 
+    //for audio
+
+    public AudioManager audioManager;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -49,12 +54,15 @@ public class PlayerManager : MonoBehaviour
         Invicibility();
         winScreen();
         activeCoinFish();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void AddCoin(int coinToAdd)
     {
         currentCoins += coinToAdd;
         coinText.text = "" + currentCoins;
+
+        audioManager.PlaySFX(audioManager.coin);
     }
 
     public void HurtPlayer(int damage, Vector3 direction)
@@ -64,6 +72,8 @@ public class PlayerManager : MonoBehaviour
             thePlayer.anim.SetTrigger("isHurt");
             currentHealth -= damage;
             healthText.text = "" + currentHealth;
+
+            audioManager.PlaySFX(audioManager.damage);
 
             if(currentHealth <= 0)
             {
@@ -85,6 +95,8 @@ public class PlayerManager : MonoBehaviour
     public void HealPlayer(int healAmount)
     {
          currentHealth += healAmount;
+
+         audioManager.PlaySFX(audioManager.health);
 
         if(currentHealth > maxHealth)
         {
@@ -151,7 +163,8 @@ public class PlayerManager : MonoBehaviour
     //When player health reaches 0, goes to game over screen
         public void gameOver(){
             gameOverUI.SetActive(true);
-
+            audioManager.PlaySFX(audioManager.death);
+            
             if (gameOverUI.activeInHierarchy){
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
@@ -168,7 +181,7 @@ public class PlayerManager : MonoBehaviour
    
          if (hasWon){ 
              winScreenUI.SetActive(true);
-
+            audioManager.PlaySFX(audioManager.win);
              if (winScreenUI.activeInHierarchy){
                  Cursor.visible = true;
                  Cursor.lockState = CursorLockMode.None;

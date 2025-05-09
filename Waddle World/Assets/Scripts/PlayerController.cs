@@ -22,10 +22,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform pivot;
     public float rotateSpeed;
 
+    //for jump sfx
+    AudioManager audioManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+    
     }
 
     // Update is called once per frame
@@ -33,7 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         PlayerMovement();
         Animations();
-        
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void PlayerMovement(){
@@ -52,6 +55,8 @@ public class PlayerController : MonoBehaviour
                 if(Input.GetButtonDown("Jump"))
                 {
                     moveDirection.y = jumpForce;
+                    audioManager.PlaySFX(audioManager.jump);
+
                 }
             }
         } 
