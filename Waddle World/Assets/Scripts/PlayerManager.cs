@@ -169,6 +169,7 @@ public class PlayerManager : MonoBehaviour
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 Camera.main.GetComponent<CameraController>().enabled = false;
+                Time.timeScale = 0f; // Pause the game
             } else{
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
