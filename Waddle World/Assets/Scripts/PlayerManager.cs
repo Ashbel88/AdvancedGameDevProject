@@ -161,7 +161,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     //When player health reaches 0, goes to game over screen
-        public void gameOver(){
+    public void gameOver(){
             gameOverUI.SetActive(true);
             audioManager.PlaySFX(audioManager.death);
             
@@ -175,9 +175,10 @@ public class PlayerManager : MonoBehaviour
             }
         
     }
+
     
     //when a gold fish is claimed, shows a win screen
-    public void winScreen(){
+    /*public void winScreen(){
    
          if (hasWon){ 
              winScreenUI.SetActive(true);
@@ -195,7 +196,23 @@ public class PlayerManager : MonoBehaviour
 
 
     }
+*/
 
+    public void winScreen() {
+    if (!hasWon) return;
+
+    winScreenUI.SetActive(true);
+    audioManager.PlaySFX(audioManager.win);
+
+    Cursor.visible = true;
+    Cursor.lockState = CursorLockMode.None;
+
+    CameraController camController = Camera.main?.GetComponent<CameraController>();
+    if (camController != null)
+        camController.enabled = false;
+
+    Time.timeScale = 0f; // Pause the game
+}
 
     public void activeCoinFish()
     {
